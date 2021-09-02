@@ -2,8 +2,8 @@
   <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled']">
     <label class="edge-checkbox__label label" @change="handleCheckboxChange">
       <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="checked">
-      <Check class="checkbox--unchecked" :width="width" :height="height" :color="checkboxColor.unchecked" :disabled="disabled" />
-      <Check class="checkbox--checked" :width="width" :height="height" :color="checkboxColor.checked" :disabled="disabled"/>
+      <Check class="checkbox--unchecked" :color="checkboxColor.unchecked" :disabled="disabled"/>
+      <Check class="checkbox--checked" :color="checkboxColor.checked" :disabled="disabled"/>
       <span class="label__option">{{option}}</span>
     </label>
   </div>
@@ -18,6 +18,18 @@
         primary: {
             unchecked: '#d9d9d9',
             checked: '#5468ff',
+        },
+        secondary: {
+            unchecked: '#d9d9d9',
+            checked: '#03dac5',
+        },
+        red: {
+            unchecked: '#d9d9d9',
+            checked: '#f44336',
+        },
+        orange: {
+            unchecked: '#d9d9d9',
+            checked: '#ff9800',
         },
         disabled: {
             unchecked: '#d9d9d9',
@@ -47,6 +59,12 @@
         switch (props.color) {
             case 'primary' :
                 return colorScheme.primary;
+            case 'secondary' :
+                return colorScheme.secondary;
+            case 'red' :
+                return colorScheme.red;
+            case 'orange' :
+                return colorScheme.orange;
             default:
                 return colorScheme.primary;
         }
@@ -83,7 +101,7 @@
         display: inline-block;
       }
 
-      input[type="checkbox"]:checked ~ .checkbox--unchecked{
+      input[type="checkbox"]:checked ~ .checkbox--unchecked {
         display: none;
       }
 

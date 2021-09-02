@@ -3,7 +3,6 @@
     // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
     import EdgeCheckbox from './components/EdgeCheckbox/EdgeCheckbox.vue';
 
-
     const handleChange = (checked:boolean) => {
         console.log(checked)
     }
@@ -12,6 +11,10 @@
 
 <template>
   <EdgeCheckbox option="apple" color="primary" @change="handleChange" />
+  <EdgeCheckbox option="apple" color="secondary" @change="handleChange" />
+  <EdgeCheckbox option="apple" color="red" @change="handleChange" />
+
+  <EdgeCheckbox option="orange" color="orange" @change="handleChange" />
 
   <EdgeCheckbox option="banana" disabled />
   <EdgeCheckbox option="tomato" disabled checked />

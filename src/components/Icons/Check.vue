@@ -10,8 +10,8 @@
     import {defineProps} from 'vue';
 
     const props = defineProps({
-        width: {type: Number, default: 16},
-        height: {type: Number, default: 16},
+        width: {type: Number, default: 18},
+        height: {type: Number, default: 18},
         color: {type: String, default: '#e6e6e6'},
         option: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
