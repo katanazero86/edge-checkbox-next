@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  {{isChecked}} / {{isChecked2}} / {{isChecked3}}
+  {{isChecked}} / {{isChecked2}} / {{isChecked3}} / {{isChecked4}} / {{isChecked5}}
   <EdgeCheckbox option="apple" color="primary" @change="handleChange"/>
   <EdgeCheckbox option="apple" color="secondary" @change="handleChange"/>
   <EdgeCheckbox option="apple" color="red" @change="handleChange"/>
@@ -30,8 +30,7 @@
   <EdgeCheckbox option="orange v-model4" color="primary" v-model="isChecked4"/>
   <EdgeCheckbox option="orange v-model4" color="primary" v-model="isChecked4"/>
 
-<!--  <EdgeCheckbox option="orange v-model3" value="하이루" color="orange" v-model:modelCheckedArray="isChecked3"/>-->
-<!--  <EdgeCheckbox option="orange v-model3" value="방가웡" color="orange" v-model:modelCheckedArray="isChecked3"/>-->
+  <EdgeCheckbox option="orange v-model5" value="하이루" color="orange" v-model="isChecked5"/>
   <EdgeCheckbox option="orange22" color="orange" checked @change="handleChange"/>
 
   <EdgeCheckbox option="orange" color="orange" @change="handleChange" border size="lg"/>

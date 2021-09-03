@@ -132,8 +132,16 @@
     const handleCheckboxChange = (e: Event) => {
         e.stopPropagation();
         emit('change', e.target.checked, e.target.value, e.target);
-        emit('update:modelValue', e.target.checked);
-//         if(typeof props.modelValue === 'boolean')
+
+        if(Array.isArray(props.modelValue)) {
+            if(e.target.checked) {
+                emit('update:modelValue', [...props.modelValue, e.target.value]);
+            } else {
+                emit('update:modelValue', [...props.modelValue.filter(value => value !== e.target.value)]);
+            }
+        } else {
+            emit('update:modelValue', e.target.checked);
+        }
     }
 
 </script>
