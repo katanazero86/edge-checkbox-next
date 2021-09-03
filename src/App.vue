@@ -11,6 +11,8 @@
     const isChecked = ref(false);
     const isChecked2 = ref(true);
     const isChecked3 = ref('');
+    const isChecked4 = ref(false);
+    const isChecked5 = ref([]);
 
 
 </script>
@@ -24,6 +26,9 @@
   <EdgeCheckbox option="orange v-model" color="orange" v-model="isChecked"/>
   <EdgeCheckbox option="orange v-model2" color="orange" v-model="isChecked2"/>
   <EdgeCheckbox option="orange v-model3" color="orange" v-model="isChecked3"/>
+
+  <EdgeCheckbox option="orange v-model4" color="primary" v-model="isChecked4"/>
+  <EdgeCheckbox option="orange v-model4" color="primary" v-model="isChecked4"/>
 
 <!--  <EdgeCheckbox option="orange v-model3" value="하이루" color="orange" v-model:modelCheckedArray="isChecked3"/>-->
 <!--  <EdgeCheckbox option="orange v-model3" value="방가웡" color="orange" v-model:modelCheckedArray="isChecked3"/>-->
