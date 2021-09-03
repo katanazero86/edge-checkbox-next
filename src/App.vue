@@ -31,6 +31,8 @@
   <EdgeCheckbox option="orange v-model5" value="하이루" color="orange" v-model="isChecked5"/>
   <EdgeCheckbox option="orange22" color="orange" checked @change="handleChange"/>
 
+  <EdgeCheckbox option="orange" color="orange" @change="handleChange" border size="sm"/>
+  <EdgeCheckbox option="orange" color="orange" @change="handleChange" border />
   <EdgeCheckbox option="orange" color="orange" @change="handleChange" border size="lg"/>
   <EdgeCheckbox option="orange" color="orange" @change="handleChange" border disabled/>
   <EdgeCheckbox option="orange" color="orange" @change="handleChange" border disabled :modelValue="true"/>
