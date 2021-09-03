@@ -1,7 +1,13 @@
 <template>
   <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled', border && 'edge-checkbox--border']">
     <label class="edge-checkbox__label label" @change="handleCheckboxChange">
-      <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="!!modelValue">
+      <template v-if="Array.isArray(modelValue)">
+        <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue.includes(value)">
+      </template>
+      <template v-else>
+        <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue">
+      </template>
+
       <Check class="checkbox--unchecked" :width="checkboxSize.width" :height="checkboxSize.height"
              :color="checkboxColor.unchecked"
              :style="[(border && disabled) && {borderColor : '#bfbfbf'}]" :disabled="disabled"/>
@@ -53,7 +59,7 @@
         option: {type: String, default: ''},
         border: {type: Boolean, default: false},
         size: {type: String, default: 'md'},
-        modelValue: {type: [String, Boolean, Array], default: false},
+        modelValue: {type: [Boolean, Array], default: false},
     });
 
     const emit = defineEmits(['change', 'update:modelValue']);
@@ -133,8 +139,8 @@
         e.stopPropagation();
         emit('change', e.target.checked, e.target.value, e.target);
 
-        if(Array.isArray(props.modelValue)) {
-            if(e.target.checked) {
+        if (Array.isArray(props.modelValue)) {
+            if (e.target.checked) {
                 emit('update:modelValue', [...props.modelValue, e.target.value]);
             } else {
                 emit('update:modelValue', [...props.modelValue.filter(value => value !== e.target.value)]);
