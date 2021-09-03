@@ -15,7 +15,9 @@
         color: {type: String, default: '#e6e6e6'},
         option: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
-    })
+    });
+
+    console.log(props);
 </script>
 
 <style lang="scss" scoped>

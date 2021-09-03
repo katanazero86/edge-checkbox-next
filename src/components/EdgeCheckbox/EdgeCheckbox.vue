@@ -1,9 +1,14 @@
 <template>
-  <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled']">
+  <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled', border && 'edge-checkbox--border']">
     <label class="edge-checkbox__label label" @change="handleCheckboxChange">
-      <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="checked">
-      <Check class="checkbox--unchecked" :color="checkboxColor.unchecked" :disabled="disabled"/>
-      <Check class="checkbox--checked" :color="checkboxColor.checked" :disabled="disabled"/>
+      <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelChecked">
+      <Check class="checkbox--unchecked" :width="checkboxSize.width" :height="checkboxSize.height"
+             :color="checkboxColor.unchecked"
+             :style="[(border && disabled) && {borderColor : '#bfbfbf'}]" :disabled="disabled"/>
+      <Check class="checkbox--checked" :width="checkboxSize.width" :height="checkboxSize.height"
+             :color="checkboxColor.checked"
+             :style="[border && checkboxBorder]"
+             :disabled="disabled"/>
       <span class="label__option">{{option}}</span>
     </label>
   </div>
@@ -35,7 +40,6 @@
             unchecked: '#d9d9d9',
             checked: '#bfbfbf',
         }
-
     }
 
     const props = defineProps({
@@ -43,19 +47,21 @@
         id: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
         value: {type: [String, Number], default: ''},
-        checked: {type: Boolean, default: false},
+        // checked: {type: Boolean, default: false},
         width: {type: Number, default: 16},
         height: {type: Number, default: 16},
         color: {type: String, default: 'primary'},
         option: {type: String, default: ''},
+        border: {type: Boolean, default: false},
+        size: {type: String, default: 'md'},
+        modelChecked: {type: [Boolean, Array], default: false},
     });
 
-    const emit = defineEmits(['change']);
+    const emit = defineEmits(['change', 'update:modelChecked']);
 
     const checkboxColor = computed(() => {
         if (typeof props.color !== 'string') return colorScheme.primary;
         if (props.disabled) return colorScheme.disabled;
-
         switch (props.color) {
             case 'primary' :
                 return colorScheme.primary;
@@ -68,12 +74,66 @@
             default:
                 return colorScheme.primary;
         }
+    });
+
+    const checkboxBorder = computed(() => {
+        if (typeof props.color !== 'string') return {
+            backgroundColor: colorScheme.primary.checked,
+            borderColor: colorScheme.primary.checked
+        };
+        if (props.disabled) return {
+            backgroundColor: colorScheme.disabled.checked,
+            borderColor: colorScheme.disabled.checked
+        };
+        switch (props.color) {
+            case 'primary' :
+                return {backgroundColor: colorScheme.primary.checked, borderColor: colorScheme.primary.checked};
+            case 'secondary' :
+                return {backgroundColor: colorScheme.secondary.checked, borderColor: colorScheme.secondary.checked};
+            case 'red' :
+                return {backgroundColor: colorScheme.red.checked, borderColor: colorScheme.red.checked};
+            case 'orange' :
+                return {backgroundColor: colorScheme.orange.checked, borderColor: colorScheme.orange.checked};
+            default:
+                return {backgroundColor: colorScheme.primary.checked, borderColor: colorScheme.primary.checked};
+        }
+    });
+
+    const checkboxSize = computed(() => {
+        if (typeof props.size !== 'string') return {
+            width: 18,
+            height: 18
+        };
+
+        switch (props.size) {
+            case 'sm' :
+                return {
+                    width: 16,
+                    height: 16
+                };
+            case 'md' :
+                return {
+                    width: 18,
+                    height: 18
+                };
+            case 'lg' :
+                return {
+                    width: 20,
+                    height: 20
+                };
+            default:
+                return {
+                    width: 18,
+                    height: 18
+                };
+        }
 
     });
 
     const handleCheckboxChange = (e: Event) => {
         e.stopPropagation();
-        emit('change', e.target.checked);
+        // emit('change', e.target.checked);
+        emit('update:modelChecked', e.target.checked);
     }
 
 </script>
@@ -99,7 +159,7 @@
 
       input[type="checkbox"]:checked ~ .checkbox--checked {
         display: inline-block;
-        animation: fade-in 0.15s linear;
+        animation: fade-in 0.2s linear;
       }
 
       input[type="checkbox"]:checked ~ .checkbox--unchecked {
@@ -126,7 +186,6 @@
 
 
     &--disabled {
-
       .edge-checkbox__label {
         cursor: not-allowed;
       }
@@ -134,6 +193,22 @@
       .label {
         &__option {
           color: #d9d9d9;
+        }
+      }
+    }
+
+    &--border {
+      .edge-checkbox__label {
+        .checkbox--checked {
+          border: 2px solid;
+          border-radius: 2px;
+          color: white !important;
+        }
+
+        .checkbox--unchecked {
+          border: 2px solid #616161;
+          border-radius: 2px;
+          color: white !important;
         }
       }
     }
