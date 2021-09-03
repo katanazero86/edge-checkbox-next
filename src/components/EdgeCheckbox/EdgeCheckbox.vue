@@ -1,7 +1,7 @@
 <template>
   <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled', border && 'edge-checkbox--border']">
     <label class="edge-checkbox__label label" @change="handleCheckboxChange">
-      <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelChecked">
+      <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="!!modelValue">
       <Check class="checkbox--unchecked" :width="checkboxSize.width" :height="checkboxSize.height"
              :color="checkboxColor.unchecked"
              :style="[(border && disabled) && {borderColor : '#bfbfbf'}]" :disabled="disabled"/>
@@ -46,17 +46,17 @@
         name: {type: String, default: ''},
         id: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
-        value: {type: [String, Number], default: ''},
+        value: {type: String, default: ''},
         width: {type: Number, default: 16},
         height: {type: Number, default: 16},
         color: {type: String, default: 'primary'},
         option: {type: String, default: ''},
         border: {type: Boolean, default: false},
         size: {type: String, default: 'md'},
-        modelChecked: {type: [Boolean, Array], default: false},
+        modelValue: {type: [String, Boolean, Array], default: false},
     });
 
-    const emit = defineEmits(['change', 'update:modelChecked']);
+    const emit = defineEmits(['change', 'update:modelValue']);
 
     const checkboxColor = computed(() => {
         if (typeof props.color !== 'string') return colorScheme.primary;
@@ -131,8 +131,9 @@
 
     const handleCheckboxChange = (e: Event) => {
         e.stopPropagation();
-        // emit('change', e.target.checked);
-        emit('update:modelChecked', e.target.checked);
+        emit('change', e.target.checked, e.target.value, e.target);
+        emit('update:modelValue', e.target.checked);
+//         if(typeof props.modelValue === 'boolean')
     }
 
 </script>
