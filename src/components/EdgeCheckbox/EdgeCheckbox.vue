@@ -2,7 +2,7 @@
   <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled', border && 'edge-checkbox--border']">
     <label class="edge-checkbox__label label" @change="handleCheckboxChange">
       <template v-if="Array.isArray(modelValue)">
-        <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue.includes(value)">
+        <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue.indexOf(value) !== -1">
       </template>
       <template v-else>
         <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue">
