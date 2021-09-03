@@ -47,7 +47,6 @@
         id: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
         value: {type: [String, Number], default: ''},
-        // checked: {type: Boolean, default: false},
         width: {type: Number, default: 16},
         height: {type: Number, default: 16},
         color: {type: String, default: 'primary'},
