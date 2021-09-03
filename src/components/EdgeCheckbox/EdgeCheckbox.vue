@@ -99,6 +99,7 @@
 
       input[type="checkbox"]:checked ~ .checkbox--checked {
         display: inline-block;
+        animation: fade-in 0.15s linear;
       }
 
       input[type="checkbox"]:checked ~ .checkbox--unchecked {
@@ -138,4 +139,15 @@
     }
 
   }
+
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
 </style>
