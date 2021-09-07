@@ -3,6 +3,7 @@
     // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
     import {ref} from 'vue';
     import EdgeCheckbox from './components/EdgeCheckbox/EdgeCheckbox.vue';
+    import EdgeRadio from './components/EdgeRadio/EdgeRadio.vue';
 
     const handleChange = (checked: boolean, value: string, el: any) => {
         console.log(checked, value, el);
@@ -12,7 +13,7 @@
     const isChecked2 = ref(true);
     const isChecked4 = ref(false);
     const isChecked5 = ref(['하이루']);
-
+    const radioState = ref('radio test');
 
 </script>
 
@@ -41,8 +42,13 @@
   <EdgeCheckbox option="orange" color="orange" @change="handleChange" size="md"/>
   <EdgeCheckbox option="orange" color="orange" @change="handleChange" size="lg"/>
 
-  <EdgeCheckbox option="banana" disabled/>
-  <EdgeCheckbox option="tomato" disabled checked/>
+  <EdgeCheckbox option="banana" inline disabled/>
+  <EdgeCheckbox option="tomato" inline disabled/>
+
+  <EdgeRadio option="radio test" value="radio test" name="radio" v-model="radioState"/>
+  <EdgeRadio option="radio test2" value="radio test2" name="radio" v-model="radioState" />
+  <EdgeRadio option="radio test2" value="radio test3" name="radio" disabled v-model="radioState" />
+  <EdgeRadio option="radio test2" value="radio test3" name="radio" disabled v-model="radioState" />
 </template>
 
 <style lang="scss" src="./assets/global.scss"></style>

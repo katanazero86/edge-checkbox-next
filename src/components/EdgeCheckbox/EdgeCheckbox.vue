@@ -1,8 +1,9 @@
 <template>
-  <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled', border && 'edge-checkbox--border']">
+  <div class="edge-checkbox" :class="[disabled && 'edge-checkbox--disabled', border && 'edge-checkbox--border', inline && 'edge-checkbox--inline']">
     <label class="edge-checkbox__label label" @change="handleCheckboxChange">
       <template v-if="Array.isArray(modelValue)">
-        <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue.indexOf(value) !== -1">
+        <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value"
+               :checked="modelValue.indexOf(value) !== -1">
       </template>
       <template v-else>
         <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue">
@@ -24,41 +25,18 @@
 
     import {defineProps, defineEmits, computed} from 'vue';
     import Check from '../Icons/Check.vue';
-
-    const colorScheme = {
-        primary: {
-            unchecked: '#d9d9d9',
-            checked: '#5468ff',
-        },
-        secondary: {
-            unchecked: '#d9d9d9',
-            checked: '#03dac5',
-        },
-        red: {
-            unchecked: '#d9d9d9',
-            checked: '#f44336',
-        },
-        orange: {
-            unchecked: '#d9d9d9',
-            checked: '#ff9800',
-        },
-        disabled: {
-            unchecked: '#d9d9d9',
-            checked: '#bfbfbf',
-        }
-    }
+    import colorScheme from '../../constants/color-scheme';
 
     const props = defineProps({
         name: {type: String, default: ''},
         id: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
         value: {type: String, default: ''},
-        width: {type: Number, default: 16},
-        height: {type: Number, default: 16},
         color: {type: String, default: 'primary'},
         option: {type: String, default: ''},
         border: {type: Boolean, default: false},
         size: {type: String, default: 'md'},
+        inline: {type: Boolean, default: false},
         modelValue: {type: [Boolean, Array], default: false},
     });
 
@@ -132,7 +110,6 @@
                     height: 18
                 };
         }
-
     });
 
     const handleCheckboxChange = (e: Event) => {
@@ -169,6 +146,7 @@
         padding: 0;
         margin: 0;
         width: 0;
+        height: 0;
       }
 
       input[type="checkbox"]:checked ~ .checkbox--checked {
@@ -193,7 +171,7 @@
     .label {
       &__option {
         display: inline-block;
-        padding: 0 8px;
+        padding: 0 4px;
         font-size: 14px;
       }
     }
@@ -225,6 +203,10 @@
           color: white !important;
         }
       }
+    }
+
+    &--inline {
+      display: inline-block;
     }
 
   }
