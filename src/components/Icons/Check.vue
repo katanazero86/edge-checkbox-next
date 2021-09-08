@@ -17,7 +17,7 @@
         disabled: {type: Boolean, default: false},
     });
 
-    console.log(props);
+
 </script>
 
 <style lang="scss" scoped>

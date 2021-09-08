@@ -1,5 +1,5 @@
 <template>
-  <div class="edge-radio" :class="[radioColor]">
+  <div class="edge-radio" :class="[radioColor, radioSize, inline && `edge-radio--inline`]">
     <label class="edge-radio__label label" @change="handleRadioChange">
       <input type="radio" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue === value">
       <span class="radio-mark"></span>
@@ -39,6 +39,21 @@
                 return 'edge-radio--orange';
             default:
                 return 'edge-radio--primary';
+        }
+    });
+
+    const radioSize = computed(() => {
+        if (typeof props.size !== 'string') return '';
+
+        switch (props.size) {
+            case 'sm' :
+                return 'edge-radio--sm'
+            case 'md' :
+                return '';
+            case 'lg' :
+                return 'edge-radio--lg'
+            default:
+                return '';
         }
     });
 
@@ -90,9 +105,7 @@
         width: 16px;
         height: 16px;
         background-color: #fff;
-        border-color: #d9d9d9;
-        border-style: solid;
-        border-width: 1px;
+        border: 1px solid #d9d9d9;
         border-radius: 50%;
 
         &:after {
@@ -102,7 +115,7 @@
           left: 3px;
           width: 10px;
           height: 10px;
-          background-color: black;
+          background-color: $primary;
           border-radius: 50%;
           opacity: 0;
           transform: scale(0);
@@ -113,7 +126,7 @@
       }
 
       input[type="radio"]:checked ~ .radio-mark {
-        border-color: black;
+        border-color: $primary;
       }
 
       input[type="radio"]:checked ~ .radio-mark:after {
@@ -124,7 +137,7 @@
 
       &__option {
         display: inline-block;
-        padding: 0 4px;
+        padding: 0 8px 0px 4px;
         font-size: 14px;
       }
 
@@ -138,6 +151,7 @@
             background-color: $primary;
           }
         }
+
         input[type="radio"]:checked ~ .radio-mark {
           border-color: $primary;
         }
@@ -151,6 +165,7 @@
             background-color: $secondary;
           }
         }
+
         input[type="radio"]:checked ~ .radio-mark {
           border-color: $secondary;
         }
@@ -164,6 +179,7 @@
             background-color: $red;
           }
         }
+
         input[type="radio"]:checked ~ .radio-mark {
           border-color: $red;
         }
@@ -177,6 +193,7 @@
             background-color: $orange;
           }
         }
+
         input[type="radio"]:checked ~ .radio-mark {
           border-color: $orange;
         }
@@ -187,19 +204,53 @@
 
       .label {
         cursor: not-allowed;
+
         .radio-mark {
           background-color: #f5f5f5;
+
           &:after {
             background-color: $disabled;
           }
         }
+
         input[type="radio"]:checked ~ .radio-mark {
           border-color: $disabled;
         }
+
         &__option {
           color: $disabled;
         }
       }
+    }
+
+    &--sm {
+      .label {
+        .radio-mark {
+          width: 14px;
+          height: 14px;
+          &:after {
+            width: 8px;
+            height: 8px;
+          }
+        }
+      }
+    }
+
+    &--lg {
+      .label {
+        .radio-mark {
+          width: 18px;
+          height: 18px;
+          &:after {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+    }
+
+    &--inline {
+      display: inline-block;
     }
 
   }

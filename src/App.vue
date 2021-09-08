@@ -45,13 +45,15 @@
   <EdgeCheckbox option="banana" inline disabled/>
   <EdgeCheckbox option="tomato" inline disabled/>
 
-  <EdgeRadio option="radio test" value="radio test" name="radio" v-model="radioState"/>
+  <EdgeRadio option="radio test" value="radio test" name="radio" size="sm" v-model="radioState"/>
   <EdgeRadio option="radio test2" value="radio test2" name="radio" v-model="radioState" />
+  <EdgeRadio option="radio test2" value="radio test3" name="radio" size="lg" disabled v-model="radioState" />
   <EdgeRadio option="radio test2" value="radio test3" name="radio" disabled v-model="radioState" />
-  <EdgeRadio option="radio test2" value="radio test3" name="radio" disabled v-model="radioState" />
+
+  <EdgeRadio option="radio test2" value="radio inline" name="inline" inline disabled v-model="radioState" />
+  <EdgeRadio option="radio test2" value="radio inline" name="inline" inline disabled v-model="radioState" />
 </template>
 
-<style lang="scss" src="./assets/global.scss"></style>
 <style lang="scss" scoped>
 
 </style>
