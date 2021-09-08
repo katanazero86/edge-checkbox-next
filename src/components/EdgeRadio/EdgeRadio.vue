@@ -1,7 +1,7 @@
 <template>
   <div class="edge-radio" :class="[radioColor, radioSize, inline && `edge-radio--inline`]">
     <label class="edge-radio__label label" @change="handleRadioChange">
-      <input type="radio" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue === value">
+      <input type="radio" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue == value">
       <span class="radio-mark"></span>
       <span class="label__option">{{option}}</span>
     </label>
@@ -15,11 +15,11 @@
         name: {type: String, default: ''},
         id: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
-        value: {type: String, default: ''},
         color: {type: String, default: 'primary'},
         option: {type: String, default: ''},
         size: {type: String, default: 'md'},
         inline: {type: Boolean, default: false},
+        value: {type: String, default: ''},
         modelValue: {type: [Boolean, String], default: ''},
     });
 
@@ -59,9 +59,7 @@
 
     const handleRadioChange = (e: Event) => {
         e.stopPropagation();
-        console.log(e.target.checked, e.target.value);
         emit('change', e.target.checked, e.target.value, e.target);
-
         emit('update:modelValue', e.target.value);
     }
 
@@ -228,6 +226,7 @@
         .radio-mark {
           width: 14px;
           height: 14px;
+
           &:after {
             width: 8px;
             height: 8px;
@@ -241,6 +240,7 @@
         .radio-mark {
           width: 18px;
           height: 18px;
+
           &:after {
             width: 12px;
             height: 12px;

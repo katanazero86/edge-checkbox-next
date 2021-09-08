@@ -3,7 +3,7 @@
     <label class="edge-checkbox__label label" @change="handleCheckboxChange">
       <template v-if="Array.isArray(modelValue)">
         <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value"
-               :checked="modelValue.indexOf(value) !== -1">
+               :checked="modelValue.indexOf(value) != -1">
       </template>
       <template v-else>
         <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="modelValue">
@@ -31,12 +31,12 @@
         name: {type: String, default: ''},
         id: {type: String, default: ''},
         disabled: {type: Boolean, default: false},
-        value: {type: String, default: ''},
         color: {type: String, default: 'primary'},
         option: {type: String, default: ''},
         border: {type: Boolean, default: false},
         size: {type: String, default: 'md'},
         inline: {type: Boolean, default: false},
+        value: {type: String, default: ''},
         modelValue: {type: [Boolean, Array], default: false},
     });
 
