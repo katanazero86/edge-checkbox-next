@@ -1,6 +1,7 @@
 {
-  "name": "edge-checkbox-next",
-  "version": "0.0.0",
+  "name": "edge-ui",
+  "version": "0.0.1",
+  "author": "zero86",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
