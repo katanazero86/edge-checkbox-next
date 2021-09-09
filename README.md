@@ -113,3 +113,38 @@ const isRadioChecked = ref(1);
 radio checked
 If modelValue and value are equal, checked
 `<EdgeRadio option="checked radio" value="test" modelValue="test"/>`
+
+
+---
+
+npm i -S @zero86/edge-ui
+
+```
+// any components
+
+<template>
+  <h1>{{ msg }}</h1>
+  <EdgeCheckbox option="test"/>
+  <EdgeRadio option="radio"/>
+</template>
+
+<script>
+    import '@zero86/edge-ui/dist/style.css';
+    import {EdgeCheckbox, EdgeRadio} from '@zero86/edge-ui';
+
+    export default {
+        name: 'HelloWorld',
+        components: {
+            EdgeCheckbox,
+            EdgeRadio,
+        },
+        data() {
+            return {
+                msg: 'hello world'
+            }
+        }
+    }
+</script>
+
+
+```
