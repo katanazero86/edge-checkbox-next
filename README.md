@@ -47,8 +47,8 @@ props
 > value: {type: String, default: ''} <br/>
 > modelValue: {type: [Boolean, Array], default: false} <br/>
 
-size : 'sm' | 'md' | 'lg' // default md
-color : 'primary' | 'secondary' | 'red' | 'orange' // default primary
+size : 'sm' | 'md' | 'lg' // default md <br/>
+color : 'primary' | 'secondary' | 'red' | 'orange' // default primary <br/>
 
 events
 > @update:modelValue = (value: any) => {} <br/>
@@ -110,8 +110,8 @@ props
 > value: {type: String, default: ''} <br/>
 > modelValue: {type: [Boolean, Array], default: ''} <br/>
 
-size : 'sm' | 'md' | 'lg' // default md
-color : 'primary' | 'secondary' | 'red' | 'orange' // default primary
+size : 'sm' | 'md' | 'lg' // default md <br/>
+color : 'primary' | 'secondary' | 'red' | 'orange' // default primary <br/>
 
 events
 > @update:modelValue = (value: any) => {} <br/>
