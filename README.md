@@ -1,6 +1,7 @@
 ## edge-ui
 
 ### npm i -S @zero86/edge-ui
+- test : https://codesandbox.io/s/peaceful-euclid-2t2y7
 
 ```
 // any components
