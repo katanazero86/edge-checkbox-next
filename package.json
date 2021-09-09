@@ -1,16 +1,43 @@
 {
-  "name": "edge-ui",
+  "name": "@zero86/edge-ui",
   "version": "0.0.1",
-  "author": "zero86",
+  "private": false,
+  "author": {
+    "name": "zero86",
+    "url": "https://github.com/katanazero86/edge-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/katanazero86/edge-ui"
+  },
+  "keywords": [
+    "ui component",
+    "checkbox",
+    "radio",
+    "vue3 checkbox",
+    "vue3 radio"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/edge-ui.umd.js",
+  "module": "./dist/edge-ui.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/edge-ui.es.js",
+      "require": "./dist/edge-ui.umd.js"
+    }
+  },
   "dependencies": {
     "vue": "^3.2.6"
   },
   "devDependencies": {
+    "@types/node": "^16.9.0",
     "@vitejs/plugin-vue": "^1.6.0",
     "@vue/compiler-sfc": "^3.0.5",
     "sass": "^1.38.2",

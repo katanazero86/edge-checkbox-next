@@ -114,16 +114,16 @@
 
     const handleCheckboxChange = (e: Event) => {
         e.stopPropagation();
-        emit('change', e.target.checked, e.target.value, e.target);
+        emit('change', (<HTMLInputElement>e.target).checked, (<HTMLInputElement>e.target).value, e.target);
 
         if (Array.isArray(props.modelValue)) {
-            if (e.target.checked) {
-                emit('update:modelValue', [...props.modelValue, e.target.value]);
+            if ((<HTMLInputElement>e.target).checked) {
+                emit('update:modelValue', [...props.modelValue, (<HTMLInputElement>e.target).value]);
             } else {
-                emit('update:modelValue', [...props.modelValue.filter(value => value !== e.target.value)]);
+                emit('update:modelValue', [...props.modelValue.filter(value => value !== (<HTMLInputElement>e.target).value)]);
             }
         } else {
-            emit('update:modelValue', e.target.checked);
+            emit('update:modelValue', (<HTMLInputElement>e.target).checked);
         }
     }
 

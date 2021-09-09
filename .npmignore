@@ -1,0 +1,10 @@
+*.iml
+/.idea/
+/public
+/src
+/lib
+
+index.html
+package-lock.json
+tsconfig.json
+vite.config.ts

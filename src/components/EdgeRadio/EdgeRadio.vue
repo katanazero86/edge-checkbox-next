@@ -59,8 +59,8 @@
 
     const handleRadioChange = (e: Event) => {
         e.stopPropagation();
-        emit('change', e.target.checked, e.target.value, e.target);
-        emit('update:modelValue', e.target.value);
+        emit('change', (<HTMLInputElement>e.target).checked, (<HTMLInputElement>e.target).value, e.target);
+        emit('update:modelValue', (<HTMLInputElement>e.target).value);
     }
 
 </script>

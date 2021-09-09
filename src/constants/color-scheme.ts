@@ -1,9 +1,14 @@
+interface keysInterface {
+    unchecked: string,
+    checked: string,
+}
+
 interface colorSchemeInterface {
-    primary: object,
-    secondary: object,
-    red: object,
-    orange: object,
-    disabled: object
+    primary: keysInterface
+    secondary: keysInterface,
+    red: keysInterface,
+    orange: keysInterface,
+    disabled: keysInterface
 }
 
 const colorScheme: colorSchemeInterface = {
